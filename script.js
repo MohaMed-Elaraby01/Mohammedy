@@ -1,3 +1,5 @@
+// Upload these MP3 files directly next to index.html.
+// Keeping the audio files at the site root avoids nested-path/hosting issues.
 let myCustomPlaylist = [
     { id: "box-1", title: ".راضيناك", src: "songs/musicBox/Radenak.mp3", cover: "Rad.png" },
     { id: "box-2", title: ".ما أروّعك", src: "songs/musicBox/Ma Arwa_ak.mp3", cover: "Arw.png" },
@@ -76,7 +78,9 @@ function loadTrack(index) {
     currentTrackIndex = index;
     const track = myCustomPlaylist[index];
 
-    audioPlayer.src = track.src;
+    // Use a relative root URL so the same code works on localhost and normal web hosting.
+    audioPlayer.src = encodeURI(track.src);
+    audioPlayer.load();
     wTrackTitle.innerText = track.title;
     wTrackArt.src = track.cover || "cover.png";
 
@@ -92,7 +96,7 @@ function loadTrack(index) {
 
     audioPlayer.play().then(() => wPlayBtn.classList.add('paused'))
         .catch(() => {
-            wTrackTitle.innerText = "خطأ في تحميل الملف ❌";
+            wTrackTitle.innerText = "Unable to play this track";
         });
 }
 
