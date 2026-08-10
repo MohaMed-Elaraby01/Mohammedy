@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><<3 ⦮ ⦯ ⟆</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    
+    <div class="custom-music-player-container">
+        <div class="player-trigger-box" onclick="togglePlayerWidget()">
+            <img src="music.png" alt="Music" class="trigger-icon">
+            <span class="pulse-ring"></span>
+        </div>
+
+        <div id="player-widget" class="player-widget-card">
+            <div class="widget-header">
+                <span class="widget-title">Music Box 🎵</span>
+                <button class="widget-close" onclick="togglePlayerWidget()">&times;</button>
+            </div>
+            
+            <div class="widget-body">
+                <div class="track-art-container">
+                    <img id="widget-track-art" src="music.png" alt="Track Art">
+                </div>
+                
+                <div class="widget-track-details">
+                    <div id="widget-track-title" class="widget-track-name">Enjoy🌷</div>
+                </div>
+
+                <div class="progress-container">
+                    <span id="current-time" class="time-label">00:00</span>
+                    <input type="range" id="track-progress-bar" min="0" max="100" value="0" oninput="seekTrack()">
+                    <span id="total-duration" class="time-label">00:00</span>
+                </div>
+
+                <div class="widget-controls">
+                    <button id="w-loop-btn" class="control-btn loop-mode-all" onclick="toggleGlobalLoop()" title="وضع التكرار"></button>
+                    <button id="widget-heart-btn" class="control-btn-heart" onclick="toggleMusicBoxLike(event)" title="إضافة للمفضلة" style="background:none; border:none; font-size:1.4rem; cursor:pointer; color:#aeaeae; outline:none;">♡</button>
+                    <button class="control-btn prev-btn" onclick="playPrevTrack()" title="السابق"></button>
+                    <button id="w-play-btn" class="control-btn play-btn-main" onclick="toggleGlobalPlay()" title="تشغيل / إيقاف"></button>
+                    <button class="control-btn next-btn" onclick="playNextTrack()" title="التالي"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="global-audio-player"></audio>
+
+    
+    <div class="main-wrapper">
+        <div class="banner">
+            <img src="banner.gif" alt="Banner">
+        </div>
+
+        <div class="avatar-container">
+            <img src="decoration.gif" class="decoration" alt="Decoration Cat">
+            <img src="avatar.png" class="avatar" alt="Avatar">
+        </div>
+
+        <h1 class="name">Mohammedy Sayed</h1>
+        <p class="username">@mohammedy44</p>
+
+        
+        <div class="social-icons">
+            <a href="https://www.youtube.com/@imohammedy44" target="_blank"><img src="youtube.png" alt="YouTube"></a>
+            <a href="https://www.instagram.com/mi.ka_x9?igsh=MWwzNWY4NDhoNWpydg==" target="_blank"><img src="instagram.png" alt="Instagram"></a>
+            <a href="https://discord.gg/2YcWr3A5" target="_blank"><img src="discord.png" alt="Discord"></a>
+        </div>
+    </div>
+
+    
+    <div class="footer-container">
+        <div class="view-counter-wrapper">
+            <div id="profile-text-box" class="profile-views-popup">ProFile Views</div>
+            <div class="view-counter" onclick="togglePopupText()">
+                <span id="count">1</span>
+                <img src="eye.png" alt="Eye" class="larger-eye">
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
