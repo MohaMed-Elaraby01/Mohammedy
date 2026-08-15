@@ -1,14 +1,8 @@
 // Upload these MP3 files directly next to index.html.
 // Keeping the audio files at the site root avoids nested-path/hosting issues.
 let myCustomPlaylist = [
-    { id: "box-1", title: ".راضيناك", src: "Radenak.mp3", cover: "Rad.png" },
-    { id: "box-2", title: ".ما أروّعك", src: "Ma Arwaak.mp3", cover: "Arw.png" },
-    { id: "box-3", title: ".معقول", src: "Maool.mp3", cover: "Mao.png" },
-    { id: "box-4", title: ".فين لياليك", src: "Fen Layalik.mp3", cover: "Fen.png" },
-    { id: "box-5", title: ".عيني تحن", src: "AinyTahen.mp3", cover: "En.png" },
-    { id: "box-6", title: ".بس وينه", src: "BasWenah.mp3", cover: "Wen.png" },
-    { id: "box-7", title: ".أول حب", src: "AwalHob.mp3", cover: "Awl.png" },
-    { id: "box-8", title: ".الليل يا ليلى", src: "AllaylouyaLayla.mp3", cover: "Lyl.png" },
+    { id: "box-1", title: ".يا ستي يا ختيارة", src: "kht.mp3", cover: "kht.png" },
+    { id: "box-2", title: ".أعظم إنجازاتي", src: "Athm.mp3", cover: "Athm.png" },
 ];
 
 let currentTrackIndex = -1;
