@@ -989,134 +989,181 @@ html, body {
     }
 
     .track-art-container {
-        width: 135px;
-        height: 135px;
-    }
+    
 
-    .widget-track-name {
-        font-size: 16px;
-    }
 
-    .widget-controls .play-btn-main {
-        width: 54px;
-        height: 54px;
-    }
+/* =========================================================
+   FINAL DESIGN UPDATE
+   Larger music button + glowing progress bar + avatar ring
+   ========================================================= */
 
-    .footer-container {
-        left: 7px;
-        bottom: 9px;
-    }
+/* Music button / trigger */
+.custom-music-player-container {
+    top: 15px;
+    left: 15px;
+    z-index: 1000;
 }
 
-
-
 .player-trigger-box {
-    width: 72px;
-    height: 72px;
+    width: 96px;
+    height: 96px;
+    padding: 6px;
+    border-radius: 22px;
+    background: #111111;
+    border: 2px solid #303030;
+    box-shadow:
+        0 8px 24px rgba(0,0,0,.65),
+        inset 0 0 0 1px rgba(255,255,255,.035);
+}
+
+.trigger-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 16px;
 }
 
-.player-trigger-box img {
-    width: 100%;
-    height: 100%;
-    border-radius: 12px;
+/* Music widget */
+.player-widget-card {
+    width: min(330px, calc(100vw - 24px));
+    border-radius: 24px;
 }
 
-@media (max-width: 600px) {
-    .player-trigger-box {
-        width: 68px;
-        height: 68px;
-        border-radius: 15px;
-        padding: 4px;
-    }
-
-    .player-trigger-box img {
-        border-radius: 11px;
-    }
-}
-
-
-
-/* ===== Music Box: smooth white neon progress bar ===== */
+/* Neon-white progress bar */
 #track-progress-bar {
     --progress-tail: 0%;
-    appearance: none;
-    -webkit-appearance: none;
-    width: 100%;
-    height: 6px;
+    height: 7px;
     border: 0;
     border-radius: 999px;
-    background: linear-gradient(
-        to right,
-        #ffffff 0%,
-        #ffffff var(--progress-tail),
-        #292929 var(--progress-tail),
-        #292929 100%
-    );
-    box-shadow:
-        0 0 4px rgba(255,255,255,.75),
-        0 0 10px rgba(255,255,255,.22);
+    background: transparent;
+    accent-color: #ffffff;
     cursor: pointer;
-    transition: background .08s linear;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,.35));
 }
 
 #track-progress-bar::-webkit-slider-runnable-track {
-    height: 6px;
+    height: 7px;
     border-radius: 999px;
-    background: transparent;
-}
-
-#track-progress-bar::-moz-range-track {
-    height: 6px;
-    border-radius: 999px;
-    background: #292929;
-}
-
-#track-progress-bar::-moz-range-progress {
-    height: 6px;
-    border-radius: 999px;
-    background: #ffffff;
+    background:
+        linear-gradient(
+            to right,
+            #ffffff 0%,
+            #ffffff var(--progress-tail),
+            #343434 var(--progress-tail),
+            #343434 100%
+        );
     box-shadow:
-        0 0 5px rgba(255,255,255,.9),
-        0 0 12px rgba(255,255,255,.35);
+        0 0 5px rgba(255,255,255,.55),
+        0 0 11px rgba(255,255,255,.20);
 }
 
 #track-progress-bar::-webkit-slider-thumb {
     appearance: none;
     -webkit-appearance: none;
-    width: 15px;
-    height: 15px;
-    margin-top: -4.5px;
+    width: 17px;
+    height: 17px;
+    margin-top: -5px;
     border-radius: 50%;
     background: #ffffff;
     border: 2px solid #ffffff;
     box-shadow:
-        0 0 4px #ffffff,
-        0 0 10px rgba(255,255,255,.85),
-        0 0 18px rgba(255,255,255,.45);
-    transition: transform .15s ease, box-shadow .15s ease;
+        0 0 5px #ffffff,
+        0 0 12px rgba(255,255,255,.85),
+        0 0 22px rgba(255,255,255,.45);
+}
+
+#track-progress-bar::-moz-range-track {
+    height: 7px;
+    border-radius: 999px;
+    background: #343434;
+    box-shadow:
+        0 0 5px rgba(255,255,255,.45),
+        0 0 11px rgba(255,255,255,.18);
+}
+
+#track-progress-bar::-moz-range-progress {
+    height: 7px;
+    border-radius: 999px;
+    background: #ffffff;
+    box-shadow:
+        0 0 5px rgba(255,255,255,.75),
+        0 0 13px rgba(255,255,255,.45);
 }
 
 #track-progress-bar::-moz-range-thumb {
-    width: 15px;
-    height: 15px;
+    width: 17px;
+    height: 17px;
     border: 2px solid #ffffff;
     border-radius: 50%;
     background: #ffffff;
     box-shadow:
-        0 0 4px #ffffff,
-        0 0 10px rgba(255,255,255,.85),
-        0 0 18px rgba(255,255,255,.45);
-}
-
-#track-progress-bar:hover::-webkit-slider-thumb {
-    transform: scale(1.12);
-    box-shadow:
         0 0 5px #ffffff,
-        0 0 13px rgba(255,255,255,.95),
-        0 0 22px rgba(255,255,255,.55);
+        0 0 12px rgba(255,255,255,.85),
+        0 0 22px rgba(255,255,255,.45);
 }
 
-.social-icons {
-    direction: ltr;
+/* Replace the plain white avatar border with a warm design-matching ring */
+.avatar-container {
+    position: relative;
+    isolation: isolate;
+}
+
+.avatar-container::before {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(
+        135deg,
+        #3a2922 0%,
+        #8b4f2c 25%,
+        #d18a3a 48%,
+        #a95f2d 70%,
+        #4a3025 100%
+    );
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    box-shadow:
+        0 0 9px rgba(209,138,58,.32),
+        0 0 18px rgba(139,79,44,.18);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.avatar {
+    border: 0 !important;
+    box-shadow:
+        0 0 0 2px #17110e,
+        0 8px 20px rgba(0,0,0,.45);
+    z-index: 2;
+}
+
+.decoration {
+    z-index: 4;
+}
+
+@media (max-width: 600px) {
+    .custom-music-player-container {
+        top: 10px;
+        left: 10px;
+    }
+
+    .player-trigger-box {
+        width: 92px;
+        height: 92px;
+        border-radius: 21px;
+        padding: 6px;
+    }
+
+    .trigger-icon {
+        border-radius: 15px;
+    }
+
+    .player-widget-card {
+        width: min(315px, calc(100vw - 20px));
+    }
 }
